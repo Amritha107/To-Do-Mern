@@ -13,7 +13,8 @@ function Login() {
   const handleLogin = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        "https://to-do-mern-abzu.onrender.com/api/auth/login",
+
         {
           email,
           password,
@@ -47,6 +48,7 @@ function Login() {
           type="email"
           className="form-control mb-3"
           placeholder="Enter Email"
+          value={email}
           onChange={(e) =>
             setEmail(e.target.value)
           }
@@ -56,6 +58,7 @@ function Login() {
           type="password"
           className="form-control mb-3"
           placeholder="Enter Password"
+          value={password}
           onChange={(e) =>
             setPassword(e.target.value)
           }
@@ -67,6 +70,22 @@ function Login() {
         >
           Login
         </button>
+
+        <p className="mt-3 text-center">
+          Don’t have an account?{" "}
+
+          <span
+            style={{
+              color: "blue",
+              cursor: "pointer",
+            }}
+            onClick={() =>
+              navigate("/register")
+            }
+          >
+            Register
+          </span>
+        </p>
       </div>
     </div>
   );

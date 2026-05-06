@@ -15,7 +15,7 @@ function Register() {
   const handleRegister = async () => {
     try {
       await axios.post(
-        "http://localhost:5000/api/auth/register",
+        "https://to-do-mern-abzu.onrender.com/api/auth/register",
         {
           name,
           email,
@@ -81,6 +81,20 @@ function Register() {
         >
           Register
         </button>
+
+        <p className="mt-3 text-center">
+          Already have an account?{" "}
+
+          <span
+            style={{
+              color: "blue",
+              cursor: "pointer",
+            }}
+            onClick={() => navigate("/")}
+          >
+            Login
+          </span>
+        </p>
       </div>
     </div>
   );
