@@ -6,24 +6,23 @@ function Dashboard() {
   const navigate = useNavigate();
 
   const [tasks, setTasks] = useState([]);
-
   const [title, setTitle] = useState("");
-
   const [priority, setPriority] =
     useState("Medium");
-
   const [dueDate, setDueDate] =
     useState("");
-
   const [darkMode, setDarkMode] =
     useState(false);
 
   const token = localStorage.getItem("token");
 
+  const API =
+    "https://to-do-mern-abzu.onrender.com";
+
   const fetchTasks = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/tasks",
+        `${API}/api/tasks`,
         {
           headers: {
             Authorization: token,
@@ -50,7 +49,7 @@ function Dashboard() {
 
     try {
       await axios.post(
-        "http://localhost:5000/api/tasks",
+        `${API}/api/tasks`,
         {
           title,
           priority,
@@ -64,21 +63,20 @@ function Dashboard() {
       );
 
       setTitle("");
-
       setPriority("Medium");
-
       setDueDate("");
 
       fetchTasks();
     } catch (error) {
       console.log(error);
+      alert("Task Adding Failed");
     }
   };
 
   const toggleTask = async (id) => {
     try {
       await axios.put(
-        `http://localhost:5000/api/tasks/${id}`,
+        `${API}/api/tasks/${id}`,
         {},
         {
           headers: {
@@ -96,7 +94,7 @@ function Dashboard() {
   const deleteTask = async (id) => {
     try {
       await axios.delete(
-        `http://localhost:5000/api/tasks/${id}`,
+        `${API}/api/tasks/${id}`,
         {
           headers: {
             Authorization: token,
